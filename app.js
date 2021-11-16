@@ -1,5 +1,6 @@
 const express = require('express')
 const { engine } = require('express-handlebars')
+const Record = require('./models/record')
 
 require('./config/mongoose')
 const app = express()
@@ -10,7 +11,10 @@ app.set('view engine', '.hbs')
 app.set('views', './views')
 
 app.get('/', (req, res) => {
-  res.render('index')
+  Record.find()
+    .lean()
+    .then(records => res.render('index', { records }))
+    .catch(error => console.error(error))
 })
 
 app.listen(port, () => {
