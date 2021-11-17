@@ -1,5 +1,21 @@
-<ul>
+<div class="row mx-1 mt-3">
   {{#each records}}
-    <li>{{this.name}}</li>
+    <ul class="list-group w-100">
+      <li class="list-group-item d-flex my-1">
+        <div class="col-9 d-flex pr-0 align-items-center">
+          <h2 class="text-info" style="width: 5%;"><i class="{{ this.categoryId.icon }}"></i></h2>
+          <div class="flex-grow-1 ml-2 text-dark">
+            <h4 class="m-0 mb-1">{{ this.name }}</h4>
+            <small class="d-block">{{ this.date }}</small>
+          </div>
+          <h4 class="m-0 text-dark text-right">{{ this.amount }}</h4>
+        </div>
+        <div class="col-3 d-flex justify-content-center align-items-center">
+          <a type="button" class="btn btn-info" href="#">Detail</a>
+          <a type="button" class="btn btn-success ml-2" href="#">Edit</a>
+          <button class="btn btn-danger ml-2" type="submit">Delete</button>
+        </div>
+      </li>
+    </ul>
   {{/each}}
-</ul>
+</div>
