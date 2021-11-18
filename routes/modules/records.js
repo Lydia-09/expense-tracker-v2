@@ -21,4 +21,13 @@ router.post('/', async (req, res) => {
     .catch((error) => console.log(error))
 })
 
+// Read - 瀏覽特定支出
+router.get('/:id', (req, res) => {
+  const id = req.params.id
+  return Record.findById(id)
+    .lean()
+    .then(record => res.render('detail', { record }))
+    .catch((error) => console.log(error))
+})
+
 module.exports = router

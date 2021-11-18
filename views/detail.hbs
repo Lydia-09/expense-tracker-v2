@@ -1,0 +1,33 @@
+<h1 class="mb-1 restaurant-show-title">{{record.name}}</h1>
+<div class="container restaurant-show-container">
+  <div class="d-flex justify-content-end">
+    <a type="button" class="btn btn-outline-secondary btn-sm btn-crud" href="/records/{{ record._id }}/edit">
+      <i class="fas fa-edit"></i>Edit
+    </a>
+    <form action="/records/{{ record._id }}?_method=DELETE" method="POST" style="display: inline;">
+      <button class="btn btn-outline-secondary btn-sm mx-2 btn-crud" type="submit" onclick="showAlert()"><i
+          class="fas fa-trash-alt"></i>Delete</button>
+    </form>
+    <a href="/">
+      <button type="button" class="btn btn-outline-secondary btn-sm btn-crud">
+        <i class="fas fa-home"></i>回首頁
+      </button>
+    </a>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-10 mx-auto">
+      <p class="mb-1">
+        <span class="text-secondary">
+          <i class="fas fa-mobile-alt pr-2"></i>日期:
+        </span>
+        {{record.date }}
+      </p>
+      <p class="mb-1">
+        <span class="text-secondary">
+          <i class="fas fa-mobile-alt pr-2"></i>金額:
+        </span>
+        {{ record.amount }}
+      </p>
+    </div>
+  </div>
+</div>
