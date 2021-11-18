@@ -39,11 +39,19 @@ router.get('/:id/edit', async (req, res) => {
     return res.render('edit', { record,  categoryData})
 })
 
-// router.post('/:id/edit', (req, res) => {
 router.put('/:id', (req, res) => {  
     const id = req.params.id
     Record.findByIdAndUpdate(id, { $set: req.body })
     .then(()=> res.redirect('/'))
+})
+
+// Delete - 刪除特定支出
+router.delete('/:id', (req, res) => {
+  const id = req.params.id
+  return Record.findById(id)
+    .then(record => record.remove())
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
 })
 
 module.exports = router

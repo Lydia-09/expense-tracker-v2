@@ -16,7 +16,9 @@
         <div class="col-3 d-flex justify-content-center align-items-center">
           <a type="button" class="btn btn-info" href="./records/{{ this._id }}">Detail</a>
           <a type="button" class="btn btn-success ml-2" href="./records/{{ this._id }}/edit">Edit</a>
-          <button class="btn btn-danger ml-2" type="submit">Delete</button>
+          <form action="./records/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
+            <button class="btn btn-danger ml-2" type="submit">Delete</button>
+          </form>
         </div>
       </li>
     </ul>
