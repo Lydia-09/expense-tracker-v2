@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Record = require('../../models/record')
 const Category = require('../../models/category')
+const record = require('../../models/record')
 
 router.get('/', (req, res) => {
   // 取得排序選項
@@ -22,7 +23,10 @@ router.get('/', (req, res) => {
     .lean()
     .populate('categoryId')
     .sort(sortOption[sortValueString])
-    .then(records => res.render('index', { records, sort }))
+    .then(records => {
+      const totalAmount = records.map(record => record.amount).reduce((a, b) => a + b)
+      res.render('index', { records, sort, totalAmount })
+    })
     .catch(error => console.error(error))
 })
 
